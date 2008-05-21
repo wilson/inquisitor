@@ -1,6 +1,6 @@
 class ExampleController < ApplicationController
   def rescue_action(e)
-    @backtrace = e.awesome_backtrace
+    @exception = e
     render :action => "show"
   end
 

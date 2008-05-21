@@ -1,1 +1,5 @@
-<%= debug(@backtrace) %>
+<% each_context(@exception.context) do |frame| %>
+  <div>
+    <%= frame_type_of(frame) %> : <%= h(frame) %>
+  </div>
+<% end %>
