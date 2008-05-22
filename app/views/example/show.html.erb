@@ -1,12 +1,16 @@
-<ul>
-  <li><a href="#">Your backtrace</a></li>
-  <li><a href="#">Your backtrace on Rubinius</a></li>
-  <li><a href="#">Git it</a></li>
-</ul>
 <div id="top">
   <p id="l33t">l33t hax0rz</p>
   <p id="l33t_use">use browsable backtraces</p>
 </div>
+
+<div id="buttons">
+  <ul>
+    <li><a href="#">Your backtrace</a></li>
+    <li><a href="#">Your backtrace on Rubinius</a></li>
+    <li><a href="#">Git it</a></li>
+  </ul>
+</div>
+
 <div id="boring" class="hidden page">
   <pre>
     <% @exception.backtrace.each do |line| %>
@@ -14,13 +18,20 @@
     <% end %>
   <pre>
 </div>
+
 <div id="awesome" class="page">
-  <% each_context(@exception.context) do |frame| %>
-    <div>
-      <%= frame_type_of(frame) %> : <%= h(frame) %>
+  <ul>
+  <% each_context(@exception.context) do |frame, index| %>
+    <li><a href="javascript:$(<%= "'frame_#{index}'" %>).show" class=<%= %(#{frame_type_of(frame)}) %>><%= frame.location %></a></li>
+    <div id=<%= %(frame_#{index})%> class="hidden">
+      <ul>
+        <li><%= frame.describe %></li>
+      </ul>
     </div>
   <% end %>
+  </ul>
 </div>
+
 <div id="get_it" class="hidden page">
   <ul>
     <li>git clone git://</li>

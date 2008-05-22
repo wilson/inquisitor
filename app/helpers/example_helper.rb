@@ -19,13 +19,14 @@ module ExampleHelper
   end
 
   def each_context(ctx)
+    i = 0
     while ctx
       unless ctx.method
         ctx = ctx.sender
         next
       end
 
-      yield ctx
+      yield ctx, i+=1
       ctx = ctx.sender
     end
   end
