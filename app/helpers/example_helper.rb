@@ -60,7 +60,8 @@ module ExampleHelper
     first.upto(last) do |i|
       mark = i == line ? "*" : " "
       number = "%5d%s  " % [i, mark]
-      yield number + lines[i-1]
+      next unless line = lines[i-1]
+      yield number + line
     end
   end
 
