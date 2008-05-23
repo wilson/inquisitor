@@ -6,13 +6,15 @@
 <%= javascript_include_tag :defaults %>
 </head>
 <body>
-  <div id="header">
-  </div>
   <div id="container">
-    <%= yield %>
-  </div>
-  <div id="footer">
-    <p>Brought to you by the awesome <%= link_to "Rubinians", "http://rubini.us" %></p>
+    <div id="header">
+    </div>
+    <div id="content">
+      <%= yield %>
+    </div>
+    <div id="footer">
+      <p>Brought to you by the awesome <%= link_to "Rubinians", "http://rubini.us" %></p>
+    </div>
   </div>
 </body>
 </html>

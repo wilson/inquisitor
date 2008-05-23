@@ -9,12 +9,12 @@ module ExampleHelper
       'kernel'
     when /(gems|vendor)/
       'framework'
-    when /lib\/rubinius/
+    when /lib\/(rubinius|rbx)?/
       'stdlib'
     when /\(eval\)/
       'eval'
     else
-      ''
+      'unknown'
     end
   end
 

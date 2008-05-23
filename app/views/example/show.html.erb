@@ -5,39 +5,50 @@
 
 <div id="buttons">
   <ul>
-    <li><a href="#">Your backtrace</a></li>
-    <li><a href="#">Your backtrace on Rubinius</a></li>
-    <li><a href="#">Git it</a></li>
+    <li><a href="#" onclick="return show_page('boring')">Your backtrace</a></li>
+    <li><a href="#" onclick="return show_page('awesome')">Your backtrace on Rubinius</a></li>
+    <li><a href="#" onclick="return show_page('git_it')">Git it</a></li>
   </ul>
 </div>
 
-<div id="boring" class="hidden page">
-  <pre>
-    <% @exception.backtrace.each do |line| %>
-<%= ellipsis line -%>
-    <% end %>
-  <pre>
-</div>
+<ul id="pages">
+  <li id="boring" style="display:none;">
+    <div class="page">
+      <pre>
+        <% @exception.backtrace.each do |line| %>
+    <%= ellipsis line -%>
+        <% end %>
+      </pre>
+    </div>
+  </li>
 
-<div id="awesome" class="page">
-  <ul>
-  <% each_context(@exception.context) do |frame, index| %>
-    <li><a href="javascript:$(<%= "'frame_#{index}'" %>).show" class=<%= %(#{frame_type_of(frame)}) %>><%= frame.location %></a></li>
-    <div id=<%= %(frame_#{index})%> class="hidden">
+  <li id="awesome">
+    <div class="page">
       <ul>
-        <li><%= frame.describe %></li>
+      <% each_context(@exception.context) do |frame, index| %>
+        <li><a href="#" class="<%= "#{frame_type_of(frame)}" %>" onclick="return show_frame(<%= index %>)">
+          <%= frame.location %></a>
+          <div id="frame_<%= index %>" class="frame" style="display:none;">
+            <ul>
+              <li><%= frame.describe %></li>
+            </ul>
+          </div>
+        </li>
+      <% end %>
       </ul>
     </div>
-  <% end %>
-  </ul>
-</div>
+  </li>
 
-<div id="get_it" class="hidden page">
-  <ul>
-    <li>git clone git://</li>
-    <li>rake</li>
-    <li>shotgun/rubinius gem install rails</li>
-    <li>shotgun/rubinius bin/rails kazaam</li>
-    <li>shotgun/rubinius kazaam/script/server</li>
-  </ul>
-</div>
+  <li id="git_it" style="display:none;">
+    <div class="page">
+      <ol>
+        <li>git clone git://git.rubini.us/code rbx</li>
+        <li>cd rbx</li>
+        <li>rake</li>
+        <li>shotgun/rubinius gem install rails</li>
+        <li>shotgun/rubinius bin/rails kazaam</li>
+        <li>shotgun/rubinius kazaam/script/server</li>
+      </ol>
+    </div>
+  </li>
+</ul>
