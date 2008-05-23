@@ -12,8 +12,10 @@
 </div>
 
 <ul id="pages">
-  <li id="boring" style="display:none;">
+  <li id="boring">
     <div class="page">
+      <h1>It was a perfect Monday until...</h1>
+      <h2>Needle, meet haystack</h2>
       <pre>
         <% @exception.backtrace.each do |line| %>
     <%= ellipsis line -%>
@@ -22,16 +24,30 @@
     </div>
   </li>
 
-  <li id="awesome">
+  <li id="awesome" style="display:none;">
     <div class="page">
       <ul>
       <% each_context(@exception.context) do |frame, index| %>
-        <li><a href="#" class="<%= "#{frame_type_of(frame)}" %>" onclick="return show_frame(<%= index %>)">
-          <%= frame.location %></a>
+        <li>
+          <div class="method_name"><%= link_to_frame frame.name, frame, index %></div>
+          <div class="method_file"> at <%= link_to_frame ellipsis(frame.location, 70), frame, index %></div>
           <div id="frame_<%= index %>" class="frame" style="display:none;">
-            <ul>
-              <li><%= frame.describe %></li>
-            </ul>
+            <dl class="tablestyle">
+              <dt>Context:</dt><dd><%= frame.describe %></dd>
+              <dt>IP/SP:</dt><dd><%= frame.ip %>/<%= frame.sp %></dd>
+              <dt>Locals:</dt>
+              <dd>
+              <% if frame.locals %>
+                <ul>
+                <% each_local(frame) do |name, value| %>
+                  <li><%= name %> = <%=h value %></li>
+                <% end %>
+                </ul>
+              <% else %>
+                <em>None</em>
+              <% end %>
+              </dd>
+            </dl>
           </div>
         </li>
       <% end %>
@@ -41,14 +57,24 @@
 
   <li id="git_it" style="display:none;">
     <div class="page">
-      <ol>
-        <li>git clone git://git.rubini.us/code rbx</li>
-        <li>cd rbx</li>
-        <li>rake</li>
-        <li>shotgun/rubinius gem install rails</li>
-        <li>shotgun/rubinius bin/rails kazaam</li>
-        <li>shotgun/rubinius kazaam/script/server</li>
-      </ol>
+      <h1>C'mon, you know you want to...</h1>
+      <h2>1. Rubinius</h2>
+        <ul>
+          <li>git clone git://git.rubini.us/code rbx</li>
+          <li>cd rbx</li>
+          <li>rake</li>
+        </ul>
+      <h2>2. Rails</h2>
+        <ul>
+          <li>shotgun/rubinius gem install rails</li>
+          <li>shotgun/rubinius bin/rails kowabunga</li>
+        </ul>
+      <h2>3. Profit&sup1;</h2>
+      <ul>
+        <li>shotgun/rubinius kowabunga/script/server</li>
+      </ul>
+      <hr />
+      <p>&sup1; There <em>is</em> a step 3.</p>
     </div>
   </li>
 </ul>

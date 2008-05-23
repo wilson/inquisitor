@@ -10,13 +10,14 @@ html, body {
 }
 a {
   text-decoration: none;
-  color: orange;
+  color: #185760;
 }
 a:hover {
   text-decoration: underline;
 }
 ul {
   list-style: none;
+  padding: 0px;
 }
 .hidden {
   display: none;
@@ -28,6 +29,8 @@ ul {
   border-width: 1px 3px 5px 1px;
   margin: 20px 0px;
   padding: 20px;
+  overflow: hidden;
+  width: 100%;
 }
 #header {
   
@@ -62,6 +65,53 @@ ul {
   font-size: 9pt;
   color: #3f3a36;
 }
+#awesome li div.method_name {
+  float: left;
+  clear: left;
+  width: 35%;
+  text-align: right;
+  display: inline;
+}
+#awesome li div.method_file {
+  float: left;
+  width: 62%;
+  margin: 0px 0px 0.15em 0.5em;
+}
+.frame {
+  background-color: #579fa9;
+  margin: 4px 0px;
+  padding: 8px 0px;
+  float: left;
+  width: 100%;
+}
+/* See the following link for styles setting up <dl> like a table
+ * http://www.romankoch.ch/capslock/cssdeflist.htm
+ */
+dl.tablestyle {
+  width: 100%;
+  margin: 0px;
+}
+.tablestyle dt {
+  float: left;
+  clear: left;
+  width: 15%;
+  margin: 0px 0px 0.25em 0px;
+  text-align: right;
+}
+.tablestyle dd {
+  float: left;
+  width: 78%;
+  margin: 0px 0px 0.25em 0.5em;
+}
+#git_it ul {
+  margin-left: 3em;
+}
+#git_it li {
+  font-size: 16px;
+}
+#git_it hr {
+  margin-top: 2em;
+}
 #footer {
   background-color: #555;
   border-color: red;
@@ -76,4 +126,7 @@ ul {
   margin: 0px;
   padding: 16px 0px;
   text-align: center;
+}
+#footer a {
+  color: #579fa9;
 }

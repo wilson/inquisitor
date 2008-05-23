@@ -18,6 +18,21 @@ module ExampleHelper
     end
   end
 
+  def each_local(ctx)
+    names = ctx.method.local_names
+    locals = ctx.locals
+
+    i, num = 0, locals.size
+    while i < num
+      name = names[i].to_s
+      local = locals[i].inspect
+      i += 1
+
+      next if name[0] == ?@
+      yield name, local
+    end
+  end
+
   def each_context(ctx)
     i = 0
     while ctx
@@ -29,5 +44,10 @@ module ExampleHelper
       yield ctx, i+=1
       ctx = ctx.sender
     end
+  end
+
+  def link_to_frame(name, frame, index)
+    link_to name, "", :class => frame_type_of(frame),
+            :onclick => "return toggle_frame(#{index})"
   end
 end

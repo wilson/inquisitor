@@ -7,7 +7,7 @@ function show_page(page) {
   return false
 }
 
-function show_frame(index) {
-  $('frame_'+index).show()
+function toggle_frame(index) {
+  $('frame_'+index).toggle()
   return false
 }
