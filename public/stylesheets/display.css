@@ -58,10 +58,11 @@ ul {
 #top p {
   margin: 5px 0px;
 }
-#l33t {
+#banner1 {
   padding-left: 100px;
+  padding-top: 25px;
 }
-#l33t_use {
+#banner2 {
   padding-left: 110px;
 }
 #buttons a:hover {
