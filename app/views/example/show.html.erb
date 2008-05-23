@@ -17,6 +17,8 @@
       <h1>It was a perfect Monday until...</h1>
       <h2>Needle, meet haystack</h2>
       <pre>
+<%= @exception.class.name %>: <%=h @exception.message -%>
+
         <% each_context(@exception.context) do |frame, index| %>
   <%= ellipsis frame.location, 80 -%>:in <%= frame.name -%>
         <% end %>
@@ -28,7 +30,7 @@
     <div class="page">
       <h1>Never fear, Bullwinkle is here!</h1>
       <h2>Click and you shall find...</h2>
-      <h3><%= @exception.class.name %>: <%= @exception.message %></h3>
+      <h3><%= @exception.class.name %>: <%= @exception.message.gsub("\n", "<br />") %></h3>
       <ul>
       <% each_context(@exception.context) do |frame, index| %>
         <li>
