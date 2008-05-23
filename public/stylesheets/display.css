@@ -10,7 +10,7 @@ html, body {
 }
 a {
   text-decoration: none;
-  color: #185760;
+  color: #a44040;
 }
 a:hover {
   text-decoration: underline;
@@ -63,6 +63,22 @@ ul {
 }
 #l33t_use {
   padding-left: 110px;
+}
+#buttons a:hover {
+  color: #555;
+  background-color: #e3e3e3;
+}
+#buttons a {
+  text-decoration: underline;
+  color: #e3e3e3;
+  background-color: #555;
+  border-color: #b92929;
+  border-style: solid;
+  border-width: 0px 2px 1px 0px;
+  font-weight: bold;
+  font-size: 150%;
+  padding: 0.4em 1.5em;
+  margin-right: 1em;
 }
 #buttons ul li {
   display: inline;
@@ -167,5 +183,7 @@ dl.tablestyle {
   text-align: center;
 }
 #footer a {
-  color: #579fa9;
+  font-size: 105%;
+  color: white;
+  text-decoration: underline;
 }
