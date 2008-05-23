@@ -122,6 +122,7 @@ ul {
   border-color: #6f6049;
   border-style: solid;
   border-width: 1px 0px 0px 3px;
+  overflow: hidden;
 }
 /* See the following link for styles setting up <dl> like a table
  * http://www.romankoch.ch/capslock/cssdeflist.htm

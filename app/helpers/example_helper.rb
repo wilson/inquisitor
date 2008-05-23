@@ -46,6 +46,24 @@ module ExampleHelper
     end
   end
 
+  def source_for(frame)
+    file = frame.file.to_s
+    return "" unless File.exist? file
+
+    frame.method.line_from_ip(frame.ip)
+    line = frame.method.line_from_ip frame.ip
+
+    first = line > 6 ? line - 6 : 1
+    last = line + 6
+    lines = File.readlines file
+
+    first.upto(last) do |i|
+      mark = i == line ? "*" : " "
+      number = "%5d%s  " % [i, mark]
+      yield number + lines[i-1]
+    end
+  end
+
   def link_to_frame(name, frame, index)
     link_to name, "", :class => "frame_#{frame_type_of(frame)}",
             :onclick => "return toggle_frame(#{index})"
