@@ -5,7 +5,7 @@ class ExampleController < ApplicationController
   end
 
   def index
-    explode!
+    # explode!
   end
 
   def explode!
