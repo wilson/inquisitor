@@ -23,7 +23,7 @@ ul {
   display: none;
 }
 .page {
-  background-color: white;
+  background-color: #dedcdb;
   border-color: #666;
   border-style: solid;
   border-width: 1px 3px 5px 1px;
@@ -31,6 +31,9 @@ ul {
   padding: 20px;
   overflow: hidden;
   width: 100%;
+}
+.page hr {
+  margin-top: 2em;
 }
 #header {
   
@@ -65,6 +68,14 @@ ul {
   font-size: 9pt;
   color: #3f3a36;
 }
+#awesome div.page > div {
+  float: left;
+  clear: left;
+  width: 100%;
+}
+#awesome div.page > div ul {
+  margin-left: 2em;
+}
 #awesome li div.method_name {
   float: left;
   clear: left;
@@ -77,12 +88,37 @@ ul {
   width: 62%;
   margin: 0px 0px 0.15em 0.5em;
 }
+.frame_app {
+  color: #a44040;
+}
+.frame_view {
+  color: #a47d40;
+}
+.frame_kernel {
+  color: purple;
+}
+.frame_framework {
+  color: #4057a4;
+}
+.frame_stdlib {
+  color: #1d8c85;
+}
+.frame_eval {
+  color: #cd38a9;
+}
+.frame_unknown {
+  color: grey;
+}
 .frame {
-  background-color: #579fa9;
-  margin: 4px 0px;
-  padding: 8px 0px;
+  color: #302c29;
+  background-color: #cebcad;
+  margin: 4px 70px 0px 70px;
+  padding: 12px 0px;
   float: left;
-  width: 100%;
+  width: 820px;
+  border-color: #6f6049;
+  border-style: solid;
+  border-width: 1px 0px 0px 3px;
 }
 /* See the following link for styles setting up <dl> like a table
  * http://www.romankoch.ch/capslock/cssdeflist.htm
@@ -92,6 +128,8 @@ dl.tablestyle {
   margin: 0px;
 }
 .tablestyle dt {
+  font-size: 105%;
+  font-weight: bold;
   float: left;
   clear: left;
   width: 15%;
@@ -108,9 +146,6 @@ dl.tablestyle {
 }
 #git_it li {
   font-size: 16px;
-}
-#git_it hr {
-  margin-top: 2em;
 }
 #footer {
   background-color: #555;

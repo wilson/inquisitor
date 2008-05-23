@@ -26,6 +26,8 @@
 
   <li id="awesome" style="display:none;">
     <div class="page">
+      <h1>Never fear, Bullwinkle is here!</h1>
+      <h2>Click and you shall find...</h2>
       <ul>
       <% each_context(@exception.context) do |frame, index| %>
         <li>
@@ -39,7 +41,7 @@
               <dd>
               <% if frame.locals %>
                 <ul>
-                <% each_local(frame) do |name, value| %>
+                <% each_local(frame) do |name, value| -%>
                   <li><%= name %> = <%=h value %></li>
                 <% end %>
                 </ul>
@@ -52,6 +54,19 @@
         </li>
       <% end %>
       </ul>
+      <div>
+        <hr />
+        <p>A legend of colors</p>
+        <ul>
+          <li class="frame_app">This is the app</li>
+          <li class="frame_view">Something view</li>
+          <li class="frame_kernel">A kernel thing</li>
+          <li class="frame_framework">What did the plumbers do</li>
+          <li class="frame_stdlib">A library of not books</li>
+          <li class="frame_eval">Code or data</li>
+          <li class="frame_unknown">Tomb of the...</li>
+        </ul>
+      </div>
     </div>
   </li>
 

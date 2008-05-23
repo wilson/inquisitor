@@ -47,7 +47,7 @@ module ExampleHelper
   end
 
   def link_to_frame(name, frame, index)
-    link_to name, "", :class => frame_type_of(frame),
+    link_to name, "", :class => "frame_#{frame_type_of(frame)}",
             :onclick => "return toggle_frame(#{index})"
   end
 end
