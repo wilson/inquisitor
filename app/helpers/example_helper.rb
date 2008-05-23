@@ -25,7 +25,7 @@ module ExampleHelper
     i, num = 0, locals.size
     while i < num
       name = names[i].to_s
-      local = locals[i].inspect
+      local = locals[i].pretty_inspect rescue locals[i].inspect
       i += 1
 
       next if name[0] == ?@
