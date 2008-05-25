@@ -58,10 +58,10 @@ module ExampleHelper
     lines = File.readlines file
 
     first.upto(last) do |i|
-      mark = i == line ? "*" : " "
+      mark = i == line ? " =>" : "   "
       number = "%5d%s  " % [i, mark]
-      next unless line = lines[i-1]
-      yield number + line
+      next unless current = lines[i-1]
+      yield number + current
     end
   end
 
