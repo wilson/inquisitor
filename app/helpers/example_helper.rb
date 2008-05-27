@@ -55,7 +55,8 @@ module ExampleHelper
 
     first = line > 6 ? line - 6 : 1
     last = line + 6
-    lines = File.readlines file
+    source = File.read file
+    lines = syntax(source)
 
     first.upto(last) do |i|
       mark = i == line ? " =>" : "   "
@@ -68,5 +69,28 @@ module ExampleHelper
   def link_to_frame(name, frame, index)
     link_to name, "", :class => "frame_#{frame_type_of(frame)}",
             :onclick => "return toggle_frame(#{index})"
+  end
+
+  def convert_syntax(text, lang = :ruby)
+    @converters ||= {}
+    @converters[lang.to_sym] ||= Syntax::Convertors::HTML.for_syntax(lang.to_s)
+    html = CGI::unescapeHTML(text)
+    html = @converters[lang.to_sym].convert(html, false).to_a
+    html.delete_at(0) if html.size > 0 and html[0].chomp.empty?
+
+    html.collect { |ln| "<li>#{ln.rstrip}</li>" }
+  end
+
+  def syntax(html, language = :ruby)
+    begin
+      html.gsub!(/<!--(.*?)-->[\n]?/m, "")
+      lines = convert_syntax(html, language)
+      return lines
+    rescue => e
+      logger.warn "Exception in syntax() helper: #{e}:\n #{e.awesome_backtrace}"
+      logger.warn "syntax() was passed language: #{language}"
+      logger.warn "syntax() was passed html: #{html}"
+      return []
+    end
   end
 end

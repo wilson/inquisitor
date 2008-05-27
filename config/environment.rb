@@ -18,7 +18,8 @@ Rails::Initializer.run do |config|
 
   # Skip frameworks you're not going to use (only works if using vendor/rails).
   # To use Rails without a database, you must remove the Active Record framework
-  config.frameworks -= [ :active_record, :active_resource, :action_mailer ]
+  config.frameworks -= [ :active_record, :active_resource, :action_mailer, :action_web_service ]
+  config.gem 'syntax'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
@@ -59,3 +60,12 @@ Rails::Initializer.run do |config|
 end
 
 require 'pp'
+require 'syntax/convertors/html'
+
+# Fix for our currently-incorrect Regexp#to_s
+module Syntax
+  class Tokenizer
+    EOL = "(?=\r\n?|\n|$)"
+  end
+end
+
