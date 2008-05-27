@@ -190,3 +190,53 @@ dl.tablestyle {
   color: white;
   text-decoration: underline;
 }
+
+/* Syntax highlighting */
+ul.ruby { color: #CCCCCC;}
+ul.ruby .normal {}
+ul.ruby .comment { color: #777; font-style: italic; }
+ul.ruby .keyword { color: #AAB9FF; font-weight: bold; }
+ul.ruby .method { color: #7a44b2; }
+ul.ruby .class { color: #c1c042; }
+ul.ruby .module { color: #c1c042 }
+ul.ruby .punct { color: #fff;  }
+ul.ruby .symbol { color: #6681d3; }
+ul.ruby .string { color: #ad9360; }
+ul.ruby .char { color: #fff; }
+ul.ruby .ident { color: #CCCCCC; }
+ul.ruby .constant { color: #c1c042; }
+ul.ruby .regex { color: #666; }
+ul.ruby .number { color: #fff; }
+ul.ruby .attribute { color: #5bb; }
+ul.ruby .global { color: #7FB; }
+ul.ruby .expr { color: #5bb; }
+ul.ruby .escape { color: #5bb; }
+
+div.code {
+  overflow:auto;
+  background-color:#000;
+}
+
+ul.code {
+  background-color:#000;
+  cell-spacing:0;
+  cell-padding:0;
+}
+
+ul.code.ruby,
+ul.code.ruby li {
+  background-color:#000;
+}
+
+ul.code li {
+  font-family: monospace;
+  font-size:110%;
+  white-space:pre;
+  position:relative;
+}
+
+ul.code li.exception_line {
+  background-color: blue;
+}
+/* End syntax highlighting */
+

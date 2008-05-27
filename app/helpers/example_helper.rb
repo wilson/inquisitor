@@ -57,12 +57,17 @@ module ExampleHelper
     last = line + 6
     source = File.read file
     lines = syntax(source)
+    markup = nil
 
     first.upto(last) do |i|
-      mark = i == line ? " =>" : "   "
-      number = "%5d%s  " % [i, mark]
+      number = "%5d  " % [i]
       next unless current = lines[i-1]
-      yield number + current
+      if i == line then
+        markup = "<li class='exception_line'>#{number}#{current.rstrip}</li>"
+      else
+        markup = "<li>#{number}#{current.rstrip}</li>"
+      end
+      yield markup
     end
   end
 
@@ -78,7 +83,7 @@ module ExampleHelper
     html = @converters[lang.to_sym].convert(html, false).to_a
     html.delete_at(0) if html.size > 0 and html[0].chomp.empty?
 
-    html.collect { |ln| "<li>#{ln.rstrip}</li>" }
+    html
   end
 
   def syntax(html, language = :ruby)

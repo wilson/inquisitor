@@ -6,6 +6,7 @@ class ExampleController < ApplicationController
   ]
 
   def rescue_action(e)
+    raise(e) unless e.respond_to?(:context) # TemplateError is evil
     @exception = e
     @banner = BANNERS[rand(BANNERS.size)]
     render :action => "show"
