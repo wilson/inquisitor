@@ -62,10 +62,3 @@ end
 require 'pp'
 require 'syntax/convertors/html'
 
-# Fix for our currently-incorrect Regexp#to_s
-module Syntax
-  class Tokenizer
-    EOL = "(?=\r\n?|\n|$)"
-  end
-end
-
