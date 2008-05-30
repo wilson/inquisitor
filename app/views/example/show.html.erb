@@ -17,10 +17,10 @@
       <h1>It was a perfect Monday until...</h1>
       <h2>Needle, meet haystack</h2>
       <pre>
-<%= @exception.class.name %>: <%=h @exception.message -%>
+        <%= @exception.class.name %>: <%=h @exception.message -%>
 
         <% each_context(@exception.context) do |frame, index| %>
-  <%= ellipsis frame.location, 80 -%>:in <%= frame.name -%>
+        <%= ellipsis frame.location, 80 -%>:in <%= frame.name -%>
         <% end %>
       </pre>
     </div>
